@@ -1,4 +1,4 @@
-module github.com/supertiger1234/nertivia
+module github.com/supertiger1234/Nertivia-server-Go
 
 go 1.13
 

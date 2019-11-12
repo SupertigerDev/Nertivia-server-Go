@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/supertiger1234/socketio"
 
-	"github.com/supertiger1234/nertivia/api/user"
+	"github.com/supertiger1234/Nertivia-server-Go/api/user"
 )
 
 func main() {

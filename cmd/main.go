@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/supertiger1234/socketio"
 
-	"github.com/supertiger1234/Nertivia-server-Go/api/user"
+	"github.com/supertiger1234/Nertivia-server-Go/api"
 )
 
 func main() {
@@ -49,7 +49,7 @@ func main() {
 	})
 
 	// Socket io
-	user.Routes(router)
+	api.Routes(router)
 	router.GET("/socket.io/*any", gin.WrapH(server))
 	router.POST("/socket.io/*any", gin.WrapH(server))
 

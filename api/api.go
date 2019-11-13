@@ -1,8 +1,8 @@
 package api
 
 import (
+	"Nertivia-server-Go/api/user"
 	"github.com/gin-gonic/gin"
-	"github.com/supertiger1234/Nertivia-server-Go/api/user"
 )
 
 func Routes(route *gin.Engine) {

@@ -1,16 +1,16 @@
 package main
 
 import (
-	"Nertivia-server-Go/api"
 	"fmt"
 	"log"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/supertiger1234/socketio"
+
+	"github.com/supertiger1234/Nertivia-server-Go/api"
 )
 
-// TODO: You should really check for errors
 func main() {
 	gin.SetMode(gin.ReleaseMode)
 
@@ -22,12 +22,12 @@ func main() {
 	}
 
 	// Socket events
-	_ = server.On("connection", func(so socketio.Socket) {
+	server.On("connection", func(so socketio.Socket) {
 		fmt.Println("connected")
 	})
-	_ = server.On("authentication", func(so socketio.Socket) {
+	server.On("authentication", func(so socketio.Socket) {
 		fmt.Println("auth")
-		_ = so.Emit("success", gin.H{
+		so.Emit("success", gin.H{
 			"user": gin.H{
 				"friends": []gin.H{},
 			},
@@ -48,11 +48,12 @@ func main() {
 		})
 	})
 
-	// Socket io
 	api.Routes(router)
+	// Socket io
 	router.GET("/socket.io/*any", gin.WrapH(server))
 	router.POST("/socket.io/*any", gin.WrapH(server))
 
 	fmt.Println("Running at http://localhost:80")
-	_ = router.Run(":80")
+	router.Run(":80")
+
 }

@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Routes(route *gin.Engine) {
+func Routes(route *gin.RouterGroup) {
 
 	user := route.Group("/users")
 	{
